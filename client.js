@@ -74,7 +74,8 @@ class WemoClient extends EventEmitter {
       method: 'POST',
       headers: {
         SOAPACTION: '"' + serviceType + '#' + action + '"',
-        'Content-Type': 'text/xml; charset="utf-8"'
+        'Content-Type': 'text/xml; charset="utf-8"',
+        'Content-Length': payload.length
       }
     }
 
@@ -181,14 +182,14 @@ class WemoClient extends EventEmitter {
   }
 
   async getBinaryState () {
-    const {BinaryState} = await this.soapAction('urn:Belkin:service:basicevent:1', 'GetBinaryState', null)
-    return BinaryState
+    const {BinaryState, brightness} = await this.soapAction('urn:Belkin:service:basicevent:1', 'GetBinaryState', null)
+    return {BinaryState, brightness}
   }
 
   async setBrightness (brightness) {
     const settings = brightness === 0 
       ? { BinaryState: 0 } 
-      : { brightness }
+      : { BinaryState: 1, brightness }
     return this.soapAction('urn:Belkin:service:basicevent:1', 'SetBinaryState', settings)
   }
 
