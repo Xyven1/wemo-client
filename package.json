@@ -2,7 +2,8 @@
   "name": "wemo-client",
   "version": "0.15.0",
   "description": "Client library for interacting with Belkin Wemo devices",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "directories": {
     "examples": "./examples"
   },
@@ -29,6 +30,12 @@
     "wemo"
   ],
   "dependencies": {
+    "@types/debug": "^4.1.8",
+    "@types/entities": "^2.0.0",
+    "@types/ip": "^1.1.0",
+    "@types/node-ssdp": "^4.0.1",
+    "@types/xml2js": "^0.4.11",
+    "@types/xmlbuilder": "^11.0.1",
     "debug": "^2.6.9",
     "entities": "^1.1.1",
     "ip": "^1.1.5",

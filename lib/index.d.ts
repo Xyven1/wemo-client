@@ -5,10 +5,10 @@ declare class Wemo {
     discover(cb: any): void;
     _listen(): void;
     _handleRequest(req: any, res: any): void;
-    getLocalInterfaceAddress(targetNetwork: any): any;
+    getLocalInterfaceAddress(targetNetwork: any): string;
     getCallbackURL(opts?: {}): string;
     _callbackURL: string;
-    client(device: any): any;
+    client(device: any): WemoClient;
     #private;
 }
 declare namespace Wemo {
@@ -24,3 +24,4 @@ declare namespace Wemo {
         let HeaterB: string;
     }
 }
+import WemoClient = require("./client.js");
